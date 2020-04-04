@@ -97,3 +97,18 @@ def readingFrames(seq):
 
     return frames, reverseFrames
 
+
+def proteinInReadingFrame(AA_sequence):
+    proteins = []
+    oneProtein = ''
+    for i in range(len(AA_sequence)):
+        oneProtein += AA_sequence[i]
+        if AA_sequence[i] == '_':
+            proteins.append(oneProtein.replace(' ', ''))
+            oneProtein = ''
+        elif oneProtein[0] == 'M':
+            oneProtein += AA_sequence[i]
+        if AA_sequence[i] == 'M':
+            oneProtein += AA_sequence[i]
+    return proteins
+
